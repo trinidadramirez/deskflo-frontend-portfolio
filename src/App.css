@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+.default-layout {
+  display: grid;
+  grid-template-rows: 80px auto 3rem;
+  grid-template-areas: 
+  "header"
+  "main"
+  "footer"
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+  min-height: 77vh;
+}
+
+footer {
+  grid-area: footer;
+  padding: 5rem;
+  font-family: verdana;
+  font-size: 80%;
+}
