@@ -13,7 +13,7 @@ export const LoginForm = ({ handleOnChange, handleOnSubmit, changeForm, email, p
           <img src={logo} width="50%" alt="DeskFlo Logo" />
           <h1 className="text-secondary">Admin Login</h1>
           <hr />
-          <Form onSubmit={handleOnSubmit}>
+          <Form autocomplete="off" onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3">
               <Form.Label className="text-secondary">Email Address</Form.Label>
               <Form.Control
