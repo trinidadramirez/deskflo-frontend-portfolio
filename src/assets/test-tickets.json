@@ -1,0 +1,81 @@
+[
+    {
+        "id": 1,
+        "requestor": "John Smith",
+        "shortDescription": "Can't log into laptop",
+        "longDescription": "Laptop isn't accepting my username and password",
+        "date": "6/15/22"
+    },
+
+    {
+        "id": 2,
+        "requestor": "Mary Smith",
+        "shortDescription": "Please reset network password",
+        "longDescription": "Laptop isn't accepting my password",
+        "date": "6/15/22"
+    },
+
+    {
+        "id": 3,
+        "requestor": "Chloe Johnson",
+        "shortDescription": "Monitor not turning on",
+        "longDescription": "Hello, my monitor does not turn on. Tried rebooting laptop, but that did not work",
+        "date": "6/15/22"
+    },
+
+    {
+        "id": 4,
+        "requestor": "Calvin Apricot",
+        "shortDescription": "Account is locked",
+        "longDescription": "Can't remember my password, and was locked out. Please unlock.",
+        "date": "6/16/22"
+    },
+
+    {
+        "id": 5,
+        "requestor": "Kim Johnson",
+        "shortDescription": "Mouse is broken",
+        "longDescription": "Hi, the right-click on my mouse doesn't seem to be working",
+        "date": "6/16/22"
+    },
+
+    {
+        "id": 6,
+        "requestor": "Chloe Johnson",
+        "shortDescription": "Keyboard not working",
+        "longDescription": "Keyboard doesn't seem to be registering keystrokes.",
+        "date": "6/16/22"
+    },
+
+    {
+        "id": 7,
+        "requestor": "Chloe Johnson",
+        "shortDescription": "Acrobat missing features",
+        "longDescription": "Acrobat is missing the redact feature",
+        "date": "6/17/22"
+    },
+
+    {
+        "id": 8,
+        "requestor": "Chloe Johnson",
+        "shortDescription": "Can't log into laptop",
+        "longDescription": "Laptop isn't accepting my username and password",
+        "date": "6/17/22"
+    },
+
+    {
+        "id": 9,
+        "requestor": "Chloe Johnson",
+        "shortDescription": "Can't log into laptop",
+        "longDescription": "Laptop isn't accepting my username and password",
+        "date": "6/17/22"
+    },
+
+    {
+        "id": 10,
+        "requestor": "Chloe Johnson",
+        "shortDescription": "Can't log into laptop",
+        "longDescription": "Laptop isn't accepting my username and password",
+        "date": "6/17/22"
+    }
+]

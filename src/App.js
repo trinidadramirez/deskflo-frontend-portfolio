@@ -4,13 +4,15 @@ import {EntryPage} from "./pages/EntryPage";
 import { DefaultLayout } from './layouts/DefaultLayout';
 import { Home } from './pages/Home';
 import { CreateTicketPage } from "./pages/CreateTicketPage";
+import { TicketListPage } from './pages/TicketListPage';
 
 function App() {
   return (
     <div className="App">
       {/*<EntryPage/>*/}
       <DefaultLayout>
-        <CreateTicketPage/>
+        <TicketListPage/>
+        {/*<CreateTicketPage/>*/}
       </DefaultLayout>
     </div>
   );

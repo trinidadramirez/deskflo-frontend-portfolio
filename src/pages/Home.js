@@ -2,6 +2,7 @@ import React from 'react'
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { NewTicketsList } from "../components/NewTicketsList";
 import { Bread } from "../components/Breadcrumb";
+import tickets from "../assets/test-tickets.json";
 
 export const Home = () => {
   return (
@@ -27,7 +28,7 @@ export const Home = () => {
 
         <Row>
             <Col className="mt-2">
-                <NewTicketsList/>
+                <NewTicketsList tickets={tickets}/>
             </Col>
         </Row>
     </Container>

@@ -2,7 +2,11 @@ import React from "react";
 import { Container, Form, Row, Button } from "react-bootstrap";
 import PropTypes from "prop-types";
 
-export const CreateTicketForm = ({ handleOnSubmit, handleOnChange, formData }) => {
+export const CreateTicketForm = ({
+  handleOnSubmit,
+  handleOnChange,
+  formData,
+}) => {
   return (
     <Container>
       <Form autoComplete="off" onSubmit={handleOnSubmit}>
@@ -52,16 +56,18 @@ export const CreateTicketForm = ({ handleOnSubmit, handleOnChange, formData }) =
           />
         </Form.Group>
 
-        <Button className="mb-3 btn-primary" type="submit">
-          Submit
-        </Button>
+        <div className="d-grid gap-2">
+          <Button className="mb-3 btn-primary" type="submit" size="lg">
+            Submit
+          </Button>
+        </div>
       </Form>
     </Container>
   );
 };
 
 CreateTicketForm.propTypes = {
-    handleOnSubmit: PropTypes.func.isRequired,
-    handleOnChange: PropTypes.func.isRequired,
-    formData: PropTypes.object.isRequired,
+  handleOnSubmit: PropTypes.func.isRequired,
+  handleOnChange: PropTypes.func.isRequired,
+  formData: PropTypes.object.isRequired,
 };
