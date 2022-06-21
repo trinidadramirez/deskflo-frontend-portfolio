@@ -32,7 +32,7 @@ export const EntryPage = () => {
   };
 
   return (
-    <div class="entry-page">
+    <div className="entry-page">
       {formLoad === "Login" && (
         <LoginForm
           handleOnChange={handleOnChange}

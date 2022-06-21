@@ -9,6 +9,7 @@ export const NewTicketsList = ({ tickets }) => {
       <thead>
         <tr>
           <th>ID</th>
+          <th>Status</th>
           <th>Requestor</th>
           <th>Short Description</th>
           <th>Long Description</th>
@@ -20,6 +21,7 @@ export const NewTicketsList = ({ tickets }) => {
           tickets.map((row) => (
             <tr key={row.id}>
               <td>{row.id}</td>
+              <td>{row.status}</td>
               <td>{row.requestor}</td>
               <td>{row.shortDescription}</td>
               <td>{row.longDescription}</td>
@@ -28,7 +30,7 @@ export const NewTicketsList = ({ tickets }) => {
           ))
         ) : (
           <tr>
-            <td  colSpan="5" className="text-center">No results</td>
+            <td  colSpan="6" className="text-center">No results</td>
           </tr>
           )}
       </tbody>

@@ -5,6 +5,7 @@ import { CreateTicketForm } from '../components/CreateTicketForm';
 
 const initFormData = {
     requestor: "",
+    status: "Open",
     shortDescription: "",
     date: "",
     longDescription: "",

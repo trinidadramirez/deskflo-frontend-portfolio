@@ -1,10 +1,11 @@
 import React from 'react'
 import { Navbar, Nav } from "react-bootstrap";
-import logo from "../../../src/deskflo-logo.png"
+import logo from "../../../src/deskflo-logo-white.png"
+import "../../../src/deskFloColor.css"
 
 export const Header = () => {
   return (
-  <Navbar collapseOnSelect bg="light" expand="md">
+  <Navbar className="navbar navbar-custom" collapseOnSelect expand="md">
     <Navbar.Brand>
         <img src={logo} width="110px" alt="DeskFlo Logo" />
     </Navbar.Brand>

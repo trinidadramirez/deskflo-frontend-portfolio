@@ -57,7 +57,7 @@ export const CreateTicketForm = ({
         </Form.Group>
 
         <div className="d-grid gap-2">
-          <Button className="mb-3 btn-primary" type="submit" size="lg">
+          <Button className="mb-3 btn-primary" type="submit">
             Submit
           </Button>
         </div>
