@@ -11,7 +11,9 @@ export const CreateTicketForm = ({
     <Container>
       <Form autoComplete="off" onSubmit={handleOnSubmit}>
         <Form.Group className="mb-3" as={Row}>
-          <Form.Label className="text-secondary">Requestor</Form.Label>
+          <div className="text-start">
+            <Form.Label className="text-secondary">Requestor</Form.Label>
+          </div>
           <Form.Control
             name="requestor"
             value={formData.requestor}
@@ -22,7 +24,11 @@ export const CreateTicketForm = ({
         </Form.Group>
 
         <Form.Group className="mb-3" as={Row}>
-          <Form.Label className="text-secondary">Short Description</Form.Label>
+          <div className="text-start">
+            <Form.Label className="text-secondary">
+              Short Description
+            </Form.Label>
+          </div>
           <Form.Control
             name="shortDescription"
             value={formData.shortDescription}
@@ -34,7 +40,9 @@ export const CreateTicketForm = ({
         </Form.Group>
 
         <Form.Group className="mb-3" as={Row}>
-          <Form.Label className="text-secondary">Date</Form.Label>
+          <div className="text-start">
+            <Form.Label className="text-secondary">Date</Form.Label>
+          </div>
           <Form.Control
             type="date"
             name="date"
@@ -45,7 +53,9 @@ export const CreateTicketForm = ({
         </Form.Group>
 
         <Form.Group className="mb-3" as={Row}>
-          <Form.Label className="text-secondary">Description</Form.Label>
+          <div className="text-start">
+            <Form.Label className="text-secondary">Description</Form.Label>
+          </div>
           <Form.Control
             as="textarea"
             name="description"
@@ -56,7 +66,7 @@ export const CreateTicketForm = ({
           />
         </Form.Group>
 
-        <div className="d-grid gap-2">
+        <div>
           <Button className="mb-3 btn-primary" type="submit">
             Submit
           </Button>

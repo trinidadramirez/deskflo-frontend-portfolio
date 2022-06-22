@@ -4,13 +4,24 @@ import { Bread } from "../components/Breadcrumb";
 import tickets from "../assets/test-tickets.json";
 import { MsgHist } from "../components/MsgHist";
 import { TicketReply } from "../components/TicketReply";
+import { useParams } from "react-router-dom";
 
 const ticket = tickets[0];
 
 export const TicketLandingPage = () => {
   const [message, setMessage] = useState("");
+  const [ticket, setTicket] = useState("");
 
-  useEffect(() => {}, [message]);
+  const {ticketId} = useParams()
+
+  useEffect(() => {
+    for (let i = 0; i < tickets.length; i++) {
+      if (tickets[i].id == ticketId) {
+        setTicket(tickets[i]);
+        continue;
+      }
+    }
+  }, [message, ticketId]);
 
   const handleOnChange = (e) => {
     setMessage(e.target.value);
@@ -30,6 +41,7 @@ export const TicketLandingPage = () => {
         </Row>
         <Row>
           <Col className="fw-bolder text-secondary text-start">
+          {ticketId}
             <div className="shortDescription">
               Short Description: {ticket.shortDescription}
             </div>
@@ -42,7 +54,7 @@ export const TicketLandingPage = () => {
         </Row>
         <Row className="mt-3">
           <Col>
-            <MsgHist msg={ticket.history} />
+            {ticket.history && <MsgHist msg={ticket.history} />}
           </Col>
         </Row>
         <hr />

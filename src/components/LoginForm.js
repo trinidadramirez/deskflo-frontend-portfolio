@@ -5,17 +5,27 @@ import "../deskFloColor.css";
 import "./LoginForm.css";
 import logo from "../deskflo-logo.png";
 
-export const LoginForm = ({ handleOnChange, handleOnSubmit, changeForm, email, password }) => {
+export const LoginForm = ({
+  handleOnChange,
+  handleOnSubmit,
+  changeForm,
+  email,
+  password,
+}) => {
   return (
     <Container className="bg-light">
       <Row>
         <Col>
           <img src={logo} width="50%" alt="DeskFlo Logo" />
-          <h1 className="text-secondary">Admin Login</h1>
+          <h1 className="text-secondary fs-3">Admin Login</h1>
           <hr />
           <Form autoComplete="off" onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3">
-              <Form.Label className="text-secondary">Email Address</Form.Label>
+              <div className="text-start">
+                <Form.Label className="text-secondary">
+                  Email Address
+                </Form.Label>
+              </div>
               <Form.Control
                 type="email"
                 name="email"
@@ -26,7 +36,9 @@ export const LoginForm = ({ handleOnChange, handleOnSubmit, changeForm, email, p
               />
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label className="text-secondary">Password</Form.Label>
+              <div className="text-start">
+                <Form.Label className="text-secondary">Password</Form.Label>
+              </div>
               <Form.Control
                 type="password"
                 name="password"
@@ -44,7 +56,11 @@ export const LoginForm = ({ handleOnChange, handleOnSubmit, changeForm, email, p
       </Row>
       <Row>
         <Col>
-          <a className="text-secondary" href="#!" onClick={() => changeForm("Reset")}>
+          <a
+            className="text-secondary"
+            href="#!"
+            onClick={() => changeForm("Reset")}
+          >
             Forgot Password?
           </a>
         </Col>

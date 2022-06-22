@@ -64,3 +64,19 @@ footer {
   font-family: verdana;
   font-size: 80%;
 }
+
+.create-ticket-layout {
+  display: grid;
+  grid-template-rows: 80px auto 3rem;
+  grid-template-areas: 
+  "header"
+  "create-ticket-main"
+  "footer"
+}
+
+create-ticket-main {
+  grid-area: create-ticket-main;
+  min-width: 65vh;
+  margin-left: auto;
+  margin-right: auto;
+}

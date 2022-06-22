@@ -7,7 +7,7 @@ export const SearchForm = ({handleOnChange, str}) => {
     <div>
         <Form>
             <Form.Group as={Row}>
-                <Form.Label column sm="3">Search: </Form.Label>
+                <Form.Label className="text-start" column sm="3">Search: </Form.Label>
                 <Col sm="20">
                     <Form.Control 
                     name="searchString"
