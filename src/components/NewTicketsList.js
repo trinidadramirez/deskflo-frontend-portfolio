@@ -1,10 +1,13 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import tickets from "../assets/test-tickets.json";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const NewTicketsList = ({ tickets }) => {
+export const NewTicketsList = () => {
+  const { searchTicketList, isLoading, error } = useSelector((state) => state.tickets);
+
+  if (isLoading) return <h3>Loading tickets...</h3>;
+  if (error) return <h3>{error}</h3>
   return (
     <Table striped bordered hover>
       <thead>
@@ -18,17 +21,17 @@ export const NewTicketsList = ({ tickets }) => {
         </tr>
       </thead>
       <tbody>
-        {tickets.length ? (
-          tickets.map((row) => (
-            <tr key={row.id}>
+        {searchTicketList.length ? (
+          searchTicketList.map((row) => (
+            <tr key={row._id}>
               <td>
-                <Link to={`/ticket/${row.id}`}>{row.id}</Link>
+                <Link to={`/ticket/${row._id}`}>{row._id}</Link>
               </td>
               <td>{row.status}</td>
               <td>{row.requestor}</td>
               <td>{row.shortDescription}</td>
-              <td>{row.longDescription}</td>
-              <td>{row.date}</td>
+              <td>{row.description}</td>
+              <td>{row.createdDate}</td>
             </tr>
           ))
         ) : (
@@ -41,8 +44,4 @@ export const NewTicketsList = ({ tickets }) => {
       </tbody>
     </Table>
   );
-};
-
-NewTicketsList.propTypes = {
-  tickets: PropTypes.array.isRequired,
 };
