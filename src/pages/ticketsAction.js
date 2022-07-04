@@ -14,7 +14,7 @@ export const fetchTickets = () => async (dispatch) => {
     const result = await axios.get("http://localhost:3001/v1/ticket", {
       headers: {
         Authorization:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGNvbXBhbnkuY29tIiwiaWF0IjoxNjU2NjQ3MDI4LCJleHAiOjE2NTY3MzM0Mjh9.4sGbNNyZ4YU70OwoG_jjQtOZqQSACGK4i2x1sWnWVQw",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlc3QyQGNvbXBhbnkuY29tIiwiaWF0IjoxNjU2OTA1MjcwLCJleHAiOjE2NTY5OTE2NzB9.YdLKb0NTlP3YK93Bk2tuME2Crdy8_P0bUBOQgzMz3B4",
       },
     });
     console.log(result);

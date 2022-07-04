@@ -1,17 +1,53 @@
-import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Row, Col, Form, Button, Spinner, Alert } from "react-bootstrap";
 import PropTypes from "prop-types";
 import "../deskFloColor.css";
 import "./LoginForm.css";
 import logo from "../deskflo-logo.png";
+import { loginAwaiting, loginSuccess, loginFail } from "../pages/loginSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {userLogin } from "../api/userApi";
+import { useHistory } from "react-router-dom";
 
-export const LoginForm = ({
-  handleOnChange,
-  handleOnSubmit,
-  changeForm,
-  email,
-  password,
-}) => {
+export const LoginForm = ({ changeForm }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const { isLoading, isAuthorized, error } = useSelector(state => state.login);
+  const hist = useHistory();
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "email":
+        setEmail(value);
+        break;
+      case "password":
+        setPassword(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleOnSubmit = async (e) => {
+    e.preventDefault();
+    dispatch(loginAwaiting());
+
+    try {
+      const isAuth = await userLogin({email, password})
+
+      if (isAuth.status === "error") {
+        return dispatch(loginFail(isAuth.message));
+      }
+      dispatch(loginSuccess());
+      hist.push("/home");
+    } catch (error) {
+      dispatch(loginFail(error.message));
+    }
+  };
+
   return (
     <Container className="bg-light">
       <Row>
@@ -22,6 +58,7 @@ export const LoginForm = ({
           <Form autoComplete="off" onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3">
               <div className="text-start">
+              {error && <Alert variant="danger">{error}</Alert>}
                 <Form.Label className="text-secondary">
                   Email Address
                 </Form.Label>
@@ -70,9 +107,5 @@ export const LoginForm = ({
 };
 
 LoginForm.propTypes = {
-  handleOnChange: PropTypes.func.isRequired,
-  handleOnSubmit: PropTypes.func.isRequired,
   changeForm: PropTypes.func.isRequired,
-  email: PropTypes.string.isRequired,
-  password: PropTypes.string.isRequired,
 };
