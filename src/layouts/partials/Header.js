@@ -4,13 +4,18 @@ import logo from "../../../src/deskflo-logo-white.png";
 import "../../../src/deskFloColor.css";
 import { useHistory } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
+import { userLogout } from "../../api/userApi";
 
 export const Header = () => {
-  const history = useHistory();
+  const hist = useHistory();
 
   const logOut = () => {
-    history.push("/");
+    sessionStorage.removeItem("accessToken");
+    localStorage.removeItem("deskflo");
+    userLogout();
+    hist.push("/");
   }
+  
   return (
     <Navbar className="navbar navbar-custom" collapseOnSelect expand="md">
       <Navbar.Brand>

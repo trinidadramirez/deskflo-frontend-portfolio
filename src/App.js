@@ -15,20 +15,22 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <EntryPage />
+            <div className="App1">
+              <EntryPage />
+            </div>
           </Route>
-            <PrivateRoute path="/home">
-              <Home />
-            </PrivateRoute>
-            <PrivateRoute path="/createTicket">
-              <CreateTicketPage />
-            </PrivateRoute>
-            <PrivateRoute path="/ticketList">
-              <TicketListPage />
-            </PrivateRoute>
-            <PrivateRoute path="/ticket/:ticketId">
-              <TicketLandingPage />
-            </PrivateRoute>
+          <PrivateRoute path="/home">
+            <Home />
+          </PrivateRoute>
+          <PrivateRoute path="/createTicket">
+            <CreateTicketPage />
+          </PrivateRoute>
+          <PrivateRoute path="/ticketList">
+            <TicketListPage />
+          </PrivateRoute>
+          <PrivateRoute path="/ticket/:ticketId">
+            <TicketLandingPage />
+          </PrivateRoute>
         </Switch>
       </Router>
     </div>
