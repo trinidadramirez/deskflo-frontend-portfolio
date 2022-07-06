@@ -105,6 +105,7 @@ export const LoginForm = ({ changeForm }) => {
               Log In
             </Button>
           </Form>
+          {isLoading && <Spinner animation="border" />}
         </Col>
       </Row>
       <Row>

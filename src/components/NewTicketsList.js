@@ -31,7 +31,7 @@ export const NewTicketsList = () => {
               <td>{row.requestor}</td>
               <td>{row.shortDescription}</td>
               <td>{row.description}</td>
-              <td>{row.createdDate}</td>
+              <td>{row.createdDate && new Date(row.createdDate).toLocaleString()}</td>
             </tr>
           ))
         ) : (

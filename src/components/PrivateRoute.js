@@ -4,10 +4,12 @@ import { DefaultLayout } from "../layouts/DefaultLayout";
 import { useSelector, useDispatch } from "react-redux";
 import { loginSuccess } from "../pages/loginSlice";
 import { getNewAccessToken } from "../api/userApi";
+import { getUserAccount } from "../pages/userAction";
 
 export const PrivateRoute = ({ children, ...rest }) => {
   const dispatch = useDispatch();
   const { isAuthorized } = useSelector((state) => state.login);
+  const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
     const replaceAccessToken = async () => {
@@ -15,6 +17,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
       result && dispatch(loginSuccess());
     };
 
+    !user._id && dispatch(getUserAccount());
     !sessionStorage.getItem("accessToken") &&
       localStorage.getItem("deskflo") &&
       replaceAccessToken();
@@ -22,7 +25,7 @@ export const PrivateRoute = ({ children, ...rest }) => {
     !isAuthorized &&
       sessionStorage.getItem("accessToken") &&
       dispatch(loginSuccess());
-  }, [dispatch, isAuthorized]);
+  }, [dispatch, isAuthorized, user._id]);
 
   return (
     <Route

@@ -25,17 +25,12 @@ export const userLogin = (formData) => {
   });
 };
 
-export const getUser = (formData) => {
+export const getUser = () => {
   return new Promise(async (resolve, reject) => {
     try {
-      const accessToken = sessionStorage.getItem("accessToken");
-
-      if (!accessToken) {
-        reject("No token available");
-      }
       const res = await axios.get(userAccountUrl, {
         headers: {
-          Authorization: accessToken,
+          Authorization: sessionStorage.getItem("accessToken"),
         },
       });
       resolve(res.data);
@@ -53,7 +48,9 @@ export const userLogout = async () => {
         Authorization: sessionStorage.getItem("accessToken"),
       },
     });
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getNewAccessToken = () => {

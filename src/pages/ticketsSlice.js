@@ -5,6 +5,8 @@ const initialState = {
   isLoading: false,
   error: "",
   searchTicketList: [],
+  specificTicket: {},
+  replyMsg: "",
 };
 
 const newTicketsListSlice = createSlice({
@@ -24,21 +26,52 @@ const newTicketsListSlice = createSlice({
       state.error = action.payload;
     },
     searchTickets: (state, action) => {
-      state.searchTicketList = state.tickets.filter(row => {
-        if (!action.payload) return row
-        return row.shortDescription.toLowerCase().includes(action.payload.toLowerCase());
-      })
-    }
+      state.searchTicketList = state.tickets.filter((row) => {
+        if (!action.payload) return row;
+        return row.shortDescription
+          .toLowerCase()
+          .includes(action.payload.toLowerCase());
+      });
+    },
+    fetchSpecificTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    fetchSpecificTicketSuccess: (state, action) => {
+      state.specificTicket = action.payload;
+      state.searchTicketList = action.payload;
+      state.isLoading = false;
+    },
+    fetchSpecificTicketFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    replyLoading: (state) => {
+      state.isLoading = true;
+    },
+    replySuccess: (state, action) => {
+      state.isLoading = false;
+      state.replyMsg = action.payload;
+    },
+    replyFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
 const { reducer, actions } = newTicketsListSlice;
 
-export const { 
-  fetchTicketLoading, 
-  fetchTicketSuccess, 
-  fetchTicketFail ,
+export const {
+  fetchTicketLoading,
+  fetchTicketSuccess,
+  fetchTicketFail,
   searchTickets,
+  fetchSpecificTicketLoading,
+  fetchSpecificTicketSuccess,
+  fetchSpecificTicketFail,
+  replyLoading,
+  replySuccess,
+  replyFail,
 } = actions;
 
 export default reducer;
