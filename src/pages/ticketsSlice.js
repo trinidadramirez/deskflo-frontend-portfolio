@@ -56,6 +56,39 @@ const newTicketsListSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    resolveTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    resolveTicketSuccess: (state, action) => {
+      state.isLoading = false;
+      state.replyMsg = action.payload;
+    },
+    resolveTicketFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    cancelTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    cancelTicketSuccess: (state, action) => {
+      state.isLoading = false;
+      state.replyMsg = action.payload;
+    },
+    cancelTicketFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
+    reopenTicketLoading: (state) => {
+      state.isLoading = true;
+    },
+    reopenTicketSuccess: (state, action) => {
+      state.isLoading = false;
+      state.replyMsg = action.payload;
+    },
+    reopenTicketFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -72,6 +105,15 @@ export const {
   replyLoading,
   replySuccess,
   replyFail,
+  resolveTicketLoading,
+  resolveTicketSuccess,
+  resolveTicketFail,
+  cancelTicketLoading,
+  cancelTicketSuccess,
+  cancelTicketFail,
+  reopenTicketLoading,
+  reopenTicketSuccess,
+  reopenTicketFail,
 } = actions;
 
 export default reducer;

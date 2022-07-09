@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Alert } from "react-bootstrap";
 import { Bread } from "../components/Breadcrumb";
 import { MsgHist } from "../components/MsgHist";
 import { TicketReply } from "../components/TicketReply";
 import { useParams } from "react-router-dom";
-import { fetchSpecificTicket } from "./ticketsAction";
+import { fetchSpecificTicket, resolveTicket, cancelTicket, reopenTicket } from "./ticketsAction";
 
 export const TicketLandingPage = () => {
-  const [message, setMessage] = useState("");
-  const [ticket, setTicket] = useState("");
+  const { replyMsg } = useSelector((state) => state.tickets);
   const dispatch = useDispatch();
   const { isLoading, error, specificTicket } = useSelector(state => state.tickets)
 
@@ -17,7 +16,7 @@ export const TicketLandingPage = () => {
 
   useEffect(() => {
     dispatch(fetchSpecificTicket(ticketId))
-  }, [message, ticketId, dispatch]);
+  }, [ticketId, dispatch]);
 
   return (
     <div>
@@ -28,6 +27,7 @@ export const TicketLandingPage = () => {
           </Col>
         </Row>
         <Row>
+        {replyMsg && <Alert variant="success">{replyMsg}</Alert>}
           <Col className="fw-bolder text-secondary text-start">
             ID: {ticketId}
             <div className="requestor">
@@ -40,7 +40,23 @@ export const TicketLandingPage = () => {
             <div className="status">Status: {specificTicket.status}</div>
           </Col>
           <Col className="text-end">
-            <Button>Resolve</Button>
+            <Row>
+              <Button 
+                className="mb-2" 
+                onClick={() => dispatch(resolveTicket(ticketId))}
+                disabled = {specificTicket.status === "Resolved" || specificTicket.status === "Canceled"}
+              >Resolve</Button>
+            </Row>
+            <Row>
+              <Button 
+                className="mb-2" 
+                onClick={() => dispatch(cancelTicket(ticketId))}
+                disabled = {specificTicket.status === "Resolved" || specificTicket.status === "Canceled"}
+              >Cancel</Button>
+            </Row>
+            <Row>
+              <Button onClick={() => dispatch(reopenTicket(ticketId))}>Reopen</Button>
+            </Row>
           </Col>
         </Row>
         <Row className="mt-3">

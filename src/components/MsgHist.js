@@ -9,7 +9,9 @@ export const MsgHist = ({ msg }) => {
     <div key={i} className="msg-hist mt-3 text-start">
       <div className="send fw-bold text-secondary">
         <div className="sender">{row.sender}</div>
-        <div className="date">{row.msgTimeStamp && new Date(row.msgTimeStamp).toLocaleString()}</div>
+        <div className="date">
+          {row.msgTimeStamp && new Date(row.msgTimeStamp).toLocaleString()}
+        </div>
       </div>
       <div className="message">{row.message}</div>
     </div>

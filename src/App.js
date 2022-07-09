@@ -6,7 +6,7 @@ import { Home } from "./pages/Home";
 import { CreateTicketPage } from "./pages/CreateTicketPage";
 import { TicketListPage } from "./pages/TicketListPage";
 import { TicketLandingPage } from "./pages/TicketLandingPage";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { PrivateRoute } from "./components/PrivateRoute";
 
 function App() {
