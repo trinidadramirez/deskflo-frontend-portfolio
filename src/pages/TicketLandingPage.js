@@ -8,9 +8,8 @@ import { useParams } from "react-router-dom";
 import { fetchSpecificTicket, resolveTicket, cancelTicket, reopenTicket } from "./ticketsAction";
 
 export const TicketLandingPage = () => {
-  const { replyMsg } = useSelector((state) => state.tickets);
   const dispatch = useDispatch();
-  const { isLoading, error, specificTicket } = useSelector(state => state.tickets)
+  const { isLoading, error, specificTicket, msgReplyError, replyMsg } = useSelector(state => state.tickets)
 
   const { ticketId } = useParams();
 
@@ -28,6 +27,8 @@ export const TicketLandingPage = () => {
         </Row>
         <Row>
         {replyMsg && <Alert variant="success">{replyMsg}</Alert>}
+        {error && <Alert variant="danger">{error}</Alert>}
+        {msgReplyError && (<Alert variant="danger">{msgReplyError}</Alert>)}
           <Col className="fw-bolder text-secondary text-start">
             ID: {ticketId}
             <div className="requestor">

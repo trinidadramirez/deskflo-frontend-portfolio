@@ -1,11 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { NewTicketsList } from "../components/NewTicketsList";
 import { Bread } from "../components/Breadcrumb";
-import tickets from "../assets/test-tickets.json";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTickets } from "../pages/ticketsAction";
 
 export const Home = () => {
+  const dispatch = useDispatch();
+  const { tickets } = useSelector((state) => state.tickets);
+
+  useEffect(() => {
+    if (!tickets.length) {
+      dispatch(fetchTickets());
+    }
+  }, [tickets, dispatch]);
+
+  const totalTickets = tickets.length;
+  const unassignedTickets = tickets.filter((row) => row.status !== "Resolved");
+
   return (
     <Container>
       <Row>
@@ -16,9 +29,11 @@ export const Home = () => {
       <Row>
         <Col className="mt-2">
           <div className="text-start fw-bold text-secondary">
-            Unassigned Tickets: 10
+            Total Tickets: {totalTickets}
           </div>
-          <div className="text-start fw-bold text-secondary">My Tickets: 5</div>
+          <div className="text-start fw-bold text-secondary">
+            Open Tickets: {unassignedTickets.length}
+          </div>
           <div className="text-end">
             <Link to="/createTicket">
               <Button className="mt-2">Create New Ticket</Button>

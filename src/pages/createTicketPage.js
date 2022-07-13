@@ -1,33 +1,9 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Container, Row, Col} from "react-bootstrap";
 import { Bread } from "../components/Breadcrumb";
 import { CreateTicketForm } from '../components/CreateTicketForm';
 
-const initFormData = {
-    requestor: "",
-    status: "Open",
-    shortDescription: "",
-    date: "",
-    longDescription: "",
-}
 export const CreateTicketPage = () => {
-    const [formData, setFormData] = useState(initFormData);
-
-    const handleOnChange = e => {
-        const {name, value} = e.target;
-        console.log(name, value);
-
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
-    }
-
-    const handleOnSubmit = e => {
-        e.preventDefault();
-        console.log("Form submitted");
-    }
-
   return (
     <Container>
         <Row>
@@ -39,9 +15,6 @@ export const CreateTicketPage = () => {
         <Row>
             <Col>
                 <CreateTicketForm 
-                    handleOnChange={handleOnChange}
-                    handleOnSubmit={handleOnSubmit}
-                    formData={formData}
                 />
             </Col>
         </Row>

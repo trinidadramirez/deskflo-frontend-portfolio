@@ -54,11 +54,15 @@ export const updateReply = (_id, msgObj) => {
 export const updateTicketStatusToResolved = (_id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.patch(resolveTicketUrl + _id, {}, {
-        headers: {
-          Authorization: sessionStorage.getItem("accessToken"),
-        },
-      });
+      const result = await axios.patch(
+        resolveTicketUrl + _id,
+        {},
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("accessToken"),
+          },
+        }
+      );
       resolve(result.data);
     } catch (error) {
       console.log(error.message);
@@ -70,11 +74,15 @@ export const updateTicketStatusToResolved = (_id) => {
 export const updateTicketStatusToCanceled = (_id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.patch(cancelTicketUrl + _id, {}, {
-        headers: {
-          Authorization: sessionStorage.getItem("accessToken"),
-        },
-      });
+      const result = await axios.patch(
+        cancelTicketUrl + _id,
+        {},
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("accessToken"),
+          },
+        }
+      );
       resolve(result.data);
     } catch (error) {
       console.log(error.message);
@@ -86,11 +94,35 @@ export const updateTicketStatusToCanceled = (_id) => {
 export const updateTicketStatusToReopened = (_id) => {
   return new Promise(async (resolve, reject) => {
     try {
-      const result = await axios.patch(reopenTicketUrl + _id, {}, {
-        headers: {
-          Authorization: sessionStorage.getItem("accessToken"),
+      const result = await axios.patch(
+        reopenTicketUrl + _id,
+        {},
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("accessToken"),
+          },
+        }
+      );
+      resolve(result.data);
+    } catch (error) {
+      console.log(error.message);
+      reject(error);
+    }
+  });
+};
+
+export const createTicket = (formData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await axios.post(
+        getSpecificTicketUrl,
+        formData,
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("accessToken"),
+          },
         },
-      });
+      );
       resolve(result.data);
     } catch (error) {
       console.log(error.message);

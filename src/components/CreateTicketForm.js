@@ -1,12 +1,46 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Form, Row, Button } from "react-bootstrap";
-import PropTypes from "prop-types";
+import { useDispatch, useSelector } from "react-redux";
+import { createNewTicket } from "../pages/createTicketAction";
+//import PropTypes from "prop-types";
 
-export const CreateTicketForm = ({
-  handleOnSubmit,
-  handleOnChange,
-  formData,
-}) => {
+const initFormData = {
+  requestor: "",
+  shortDescription: "",
+  date: "",
+  longDescription: "",
+}
+
+const initFormError = {
+  requestor: false,
+  shortDescription: false,
+  date: false,
+  longDescription: false,
+}
+
+export const CreateTicketForm = () => {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState(initFormData);
+  const [formDataError, setFormDataError] = useState(initFormError);
+  const {user: {name}} = useSelector((state) => state.user)
+
+  useEffect(() => {}, [formData, formDataError]);
+
+  const handleOnChange = e => {
+        const {name, value} = e.target;
+
+        setFormData({
+            ...formData,
+            [name]: value,
+        });
+    }
+
+    const handleOnSubmit = e => {
+        e.preventDefault();
+        console.log("Form submitted");
+        dispatch(createNewTicket({ ...formData, sender: name, message: "Enter new messages here" }));
+    }
+
   return (
     <Container>
       <Form autoComplete="off" onSubmit={handleOnSubmit}>
@@ -75,9 +109,10 @@ export const CreateTicketForm = ({
     </Container>
   );
 };
-
+/*
 CreateTicketForm.propTypes = {
   handleOnSubmit: PropTypes.func.isRequired,
   handleOnChange: PropTypes.func.isRequired,
   formData: PropTypes.object.isRequired,
 };
+*/
