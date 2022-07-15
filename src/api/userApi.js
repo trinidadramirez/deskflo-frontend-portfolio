@@ -41,18 +41,6 @@ export const getUser = () => {
   });
 };
 
-export const userLogout = async () => {
-  try {
-    await axios.delete(userLogoutUrl, {
-      headers: {
-        Authorization: sessionStorage.getItem("accessToken"),
-      },
-    });
-  } catch (error) {
-    console.log(error);
-  }
-};
-
 export const getNewAccessToken = () => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -79,4 +67,16 @@ export const getNewAccessToken = () => {
       reject(false);
     }
   });
+};
+
+export const userLogout = async () => {
+  try {
+    await axios.delete(userLogoutUrl, {
+      headers: {
+        Authorization: sessionStorage.getItem("accessToken"),
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

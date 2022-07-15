@@ -90,6 +90,11 @@ const newTicketsListSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+    resetTicketLandingPageMsg: (state) => {
+      state.isLoading = false;
+      state.msgReplyError = "";
+      state.replyMsg = "";
+    },
   },
 });
 
@@ -115,6 +120,7 @@ export const {
   reopenTicketLoading,
   reopenTicketSuccess,
   reopenTicketFail,
+  resetTicketLandingPageMsg,
 } = actions;
 
 export default reducer;

@@ -1,48 +1,65 @@
 import React, { useState, useEffect } from "react";
-import { Container, Form, Row, Button } from "react-bootstrap";
+import { Container, Form, Row, Button, Alert } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { createNewTicket } from "../pages/createTicketAction";
-//import PropTypes from "prop-types";
+import { resetMsg } from "../pages/createTicketSlice";
 
 const initFormData = {
   requestor: "",
   shortDescription: "",
   date: "",
   longDescription: "",
-}
+};
 
 const initFormError = {
   requestor: false,
   shortDescription: false,
   date: false,
   longDescription: false,
-}
+};
 
 export const CreateTicketForm = () => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState(initFormData);
   const [formDataError, setFormDataError] = useState(initFormError);
-  const {user: {name}} = useSelector((state) => state.user)
+  const {
+    user: { name },
+  } = useSelector((state) => state.user);
+  const { error, success } = useSelector((state) => state.createTicket);
 
-  useEffect(() => {}, [formData, formDataError]);
-
-  const handleOnChange = e => {
-        const {name, value} = e.target;
-
-        setFormData({
-            ...formData,
-            [name]: value,
-        });
+  useEffect(() => {
+    return () => {
+      success && dispatch(resetMsg())
     }
+  }, [formData, formDataError, dispatch]);
 
-    const handleOnSubmit = e => {
-        e.preventDefault();
-        console.log("Form submitted");
-        dispatch(createNewTicket({ ...formData, sender: name, message: "Enter new messages here" }));
-    }
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted");
+    dispatch(
+      createNewTicket({
+        ...formData,
+        sender: name,
+        message: "Enter new messages here",
+      })
+    );
+  };
 
   return (
     <Container>
+      <div>
+        {error && <Alert variant="danger">{error}</Alert>}
+        {success && <Alert variant="success">{success}</Alert>}
+      </div>
       <Form autoComplete="off" onSubmit={handleOnSubmit}>
         <Form.Group className="mb-3" as={Row}>
           <div className="text-start">
@@ -109,10 +126,3 @@ export const CreateTicketForm = () => {
     </Container>
   );
 };
-/*
-CreateTicketForm.propTypes = {
-  handleOnSubmit: PropTypes.func.isRequired,
-  handleOnChange: PropTypes.func.isRequired,
-  formData: PropTypes.object.isRequired,
-};
-*/
