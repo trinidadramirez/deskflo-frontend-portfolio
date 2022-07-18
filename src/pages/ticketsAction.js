@@ -34,7 +34,6 @@ export const fetchTickets = () => async (dispatch) => {
 
   try {
     const result = await getTickets();
-
     dispatch(fetchTicketSuccess(result.data.result));
   } catch (error) {
     dispatch(fetchTicketFail(error.message));
@@ -47,7 +46,6 @@ export const filterTickets = (str) => (dispatch) => {
 
 export const fetchSpecificTicket = (_id) => async (dispatch) => {
   dispatch(fetchSpecificTicketLoading());
-
   try {
     const result = await getSpecificTicket(_id);
 
@@ -67,7 +65,6 @@ export const fetchReply = (_id, msgObj) => async (dispatch) => {
 
   try {
     const result = await updateReply(_id, msgObj);
-    console.log(result);
 
     if (result.status === "error") {
       return dispatch(replyFail(result.message));
@@ -85,6 +82,7 @@ export const resolveTicket = (_id) => async (dispatch) => {
   dispatch(resolveTicketLoading());
 
   try {
+    //console.log(_id);
     const result = await updateTicketStatusToResolved(_id);
     console.log(result);
 

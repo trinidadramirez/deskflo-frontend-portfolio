@@ -63,6 +63,7 @@ export const updateTicketStatusToResolved = (_id) => {
           },
         }
       );
+      console.log(result.data);
       resolve(result.data);
     } catch (error) {
       console.log(error.message);

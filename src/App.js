@@ -17,7 +17,7 @@ function App() {
               <EntryPage />
             </div>
           </Route>
-          <PrivateRoute path="/home/">
+          <PrivateRoute path="/home">
             <Home />
           </PrivateRoute>
           <PrivateRoute path="/createTicket">
