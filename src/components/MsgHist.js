@@ -7,7 +7,7 @@ export const MsgHist = ({ msg }) => {
   if (!msg) return null;
   return msg.map((row, i) => (
     <div key={i} className="msg-hist mt-3 text-start">
-      <div className="send fw-bold text-secondary">
+      <div>
         <div className="sender">{row.sender}</div>
         <div className="date">
           {row.msgTimeStamp && new Date(row.msgTimeStamp).toLocaleString()}

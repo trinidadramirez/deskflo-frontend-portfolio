@@ -65,11 +65,11 @@ export const LoginForm = ({ changeForm }) => {
   };
 
   return (
-    <Container className="bg-light">
+    <Container>
       <Row>
         <Col>
           <img src={logo} width="50%" alt="DeskFlo Logo" />
-          <h1 className="text-secondary fs-3">Admin Login</h1>
+          <h1 id="adminLabel" className="text-secondary fs-3">Admin Login</h1>
           <hr />
           <Form autoComplete="off" onSubmit={handleOnSubmit}>
             <Form.Group className="mb-3">
@@ -83,7 +83,6 @@ export const LoginForm = ({ changeForm }) => {
                 type="email"
                 name="email"
                 value={email}
-                placeholder="Enter email"
                 onChange={handleOnChange}
                 required
               />
@@ -96,7 +95,6 @@ export const LoginForm = ({ changeForm }) => {
                 type="password"
                 name="password"
                 value={password}
-                placeholder="Enter password"
                 onChange={handleOnChange}
                 required
               />

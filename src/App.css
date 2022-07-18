@@ -86,3 +86,19 @@ create-ticket-main {
   margin-left: auto;
   margin-right: auto;
 }
+
+.jumbotron {
+  padding: 2rem 2rem;
+  margin-bottom: 2rem;
+  background-color: #e9ecef;
+  border-radius: .3rem;
+  box-shadow: 2px 2px 2px black;
+}
+
+.jumbotron-width {
+  width: 60vh;
+}
+
+.btn-shadow {
+  box-shadow: 2px 2px 2px black;
+}

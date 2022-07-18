@@ -11,7 +11,7 @@ export const EntryPage = () => {
   };
 
   return (
-    <div className="entry-page">
+    <div className="entry-page jumbotron jumbotron-width">
       {formLoad === "Login" && (
         <LoginForm
           changeForm={changeForm}

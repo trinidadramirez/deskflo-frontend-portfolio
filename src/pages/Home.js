@@ -11,10 +11,8 @@ export const Home = () => {
   const { tickets } = useSelector((state) => state.tickets);
 
   useEffect(() => {
-    if (!tickets.length) {
       dispatch(fetchTickets());
-    }
-  }, [tickets, dispatch]);
+  }, [dispatch]);
 
   const totalTickets = tickets.length;
   const unassignedTickets = tickets.filter((row) => row.status !== "Resolved");

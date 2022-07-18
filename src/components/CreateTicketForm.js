@@ -29,9 +29,9 @@ export const CreateTicketForm = () => {
 
   useEffect(() => {
     return () => {
-      success && dispatch(resetMsg())
-    }
-  }, [formData, formDataError, dispatch]);
+      success && dispatch(resetMsg());
+    };
+  }, [formData, formDataError, dispatch, success]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -56,73 +56,75 @@ export const CreateTicketForm = () => {
 
   return (
     <Container>
-      <div>
-        {error && <Alert variant="danger">{error}</Alert>}
-        {success && <Alert variant="success">{success}</Alert>}
-      </div>
-      <Form autoComplete="off" onSubmit={handleOnSubmit}>
-        <Form.Group className="mb-3" as={Row}>
-          <div className="text-start">
-            <Form.Label className="text-secondary">Requestor</Form.Label>
-          </div>
-          <Form.Control
-            name="requestor"
-            value={formData.requestor}
-            onChange={handleOnChange}
-            placeholder="Enter requestor name"
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" as={Row}>
-          <div className="text-start">
-            <Form.Label className="text-secondary">
-              Short Description
-            </Form.Label>
-          </div>
-          <Form.Control
-            name="shortDescription"
-            value={formData.shortDescription}
-            maxLength="100"
-            placeholder="Enter short description"
-            onChange={handleOnChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" as={Row}>
-          <div className="text-start">
-            <Form.Label className="text-secondary">Date</Form.Label>
-          </div>
-          <Form.Control
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleOnChange}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group className="mb-3" as={Row}>
-          <div className="text-start">
-            <Form.Label className="text-secondary">Description</Form.Label>
-          </div>
-          <Form.Control
-            as="textarea"
-            name="description"
-            value={formData.description}
-            onChange={handleOnChange}
-            placeholder="Enter description"
-            required
-          />
-        </Form.Group>
-
+      <div className="jumbotron jumbotron-width">
         <div>
-          <Button className="mb-3 btn-primary" type="submit">
-            Submit
-          </Button>
+          {error && <Alert variant="danger">{error}</Alert>}
+          {success && <Alert variant="success">{success}</Alert>}
         </div>
-      </Form>
+        <Form autoComplete="off" onSubmit={handleOnSubmit}>
+          <Form.Group className="mb-3" as={Row}>
+            <div className="text-start">
+              <Form.Label className="text-secondary">Requestor</Form.Label>
+            </div>
+            <Form.Control
+              name="requestor"
+              value={formData.requestor}
+              onChange={handleOnChange}
+              placeholder="Enter requestor name"
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" as={Row}>
+            <div className="text-start">
+              <Form.Label className="text-secondary">
+                Short Description
+              </Form.Label>
+            </div>
+            <Form.Control
+              name="shortDescription"
+              value={formData.shortDescription}
+              maxLength="100"
+              placeholder="Enter short description"
+              onChange={handleOnChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" as={Row}>
+            <div className="text-start">
+              <Form.Label className="text-secondary">Date</Form.Label>
+            </div>
+            <Form.Control
+              type="date"
+              name="date"
+              value={formData.date}
+              onChange={handleOnChange}
+              required
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" as={Row}>
+            <div className="text-start">
+              <Form.Label className="text-secondary">Description</Form.Label>
+            </div>
+            <Form.Control
+              as="textarea"
+              name="description"
+              value={formData.description}
+              onChange={handleOnChange}
+              placeholder="Enter description"
+              required
+            />
+          </Form.Group>
+
+          <div>
+            <Button className="mb-3 btn-primary" type="submit">
+              Submit
+            </Button>
+          </div>
+        </Form>
+      </div>
     </Container>
   );
 };

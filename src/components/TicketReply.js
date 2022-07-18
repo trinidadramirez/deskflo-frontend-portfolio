@@ -39,7 +39,7 @@ export const TicketReply = ({ _id }) => {
           onChange={handleOnChange}
         />
         <div className="text-end mt-3">
-          <Button type="submit">Reply</Button>
+          <Button className="btn-shadow" type="submit">Reply</Button>
         </div>
       </Form>
     </div>

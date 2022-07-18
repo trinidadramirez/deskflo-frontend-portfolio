@@ -41,25 +41,10 @@ export const TicketLandingPage = () => {
           {replyMsg && <Alert variant="success">{replyMsg}</Alert>}
           {error && <Alert variant="danger">{error}</Alert>}
           {msgReplyError && <Alert variant="danger">{msgReplyError}</Alert>}
-          <Col className="fw-bolder text-secondary text-start">
-            ID: {ticketId}
-            <div className="requestor">
-              Requestor: {specificTicket.requestor}
-            </div>
-            <div className="shortDescription">
-              Short Description: {specificTicket.shortDescription}
-            </div>
-            <div className="date">
-              Created Date:{" "}
-              {specificTicket.createdDate &&
-                new Date(specificTicket.createdDate).toLocaleString()}
-            </div>
-            <div className="status">Status: {specificTicket.status}</div>
-          </Col>
           <Col className="text-end">
             <Row>
               <Button
-                className="mb-2"
+                className="mb-2 btn-shadow"
                 onClick={() => dispatch(resolveTicket(ticketId))}
                 disabled={
                   specificTicket.status === "Resolved" ||
@@ -71,7 +56,7 @@ export const TicketLandingPage = () => {
             </Row>
             <Row>
               <Button
-                className="mb-2"
+                className="mb-2 btn-shadow"
                 onClick={() => dispatch(cancelTicket(ticketId))}
                 disabled={
                   specificTicket.status === "Resolved" ||
@@ -82,11 +67,28 @@ export const TicketLandingPage = () => {
               </Button>
             </Row>
             <Row>
-              <Button onClick={() => dispatch(reopenTicket(ticketId))}>
+              <Button className="mb-3 btn-shadow" onClick={() => dispatch(reopenTicket(ticketId))}>
                 Reopen
               </Button>
             </Row>
           </Col>
+          <div className="text-black text-start jumbotron bg-deskflo-color-no-vh">
+            <Col>
+              ID: {ticketId}
+              <div className="requestor">
+                Requestor: {specificTicket.requestor}
+              </div>
+              <div className="shortDescription">
+                Short Description: {specificTicket.shortDescription}
+              </div>
+              <div className="date">
+                Created Date:{" "}
+                {specificTicket.createdDate &&
+                  new Date(specificTicket.createdDate).toLocaleString()}
+              </div>
+              <div className="status">Status: {specificTicket.status}</div>
+            </Col>
+          </div>
         </Row>
         <Row className="mt-3">
           <Col>

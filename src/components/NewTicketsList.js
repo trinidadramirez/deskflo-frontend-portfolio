@@ -9,7 +9,7 @@ export const NewTicketsList = () => {
   if (isLoading) return <h3>Loading tickets...</h3>;
   if (error) return <h3>{error}</h3>
   return (
-    <Table striped bordered hover>
+    <Table className="table table-sm" striped bordered hover>
       <thead>
         <tr>
           <th>ID</th>
