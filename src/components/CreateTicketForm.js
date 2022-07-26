@@ -74,6 +74,18 @@ export const CreateTicketForm = () => {
               required
             />
           </Form.Group>
+          
+          <Form.Group className="mb-3" as={Row}>
+            <div className="text-start">
+              <Form.Label className="text-secondary">Priority</Form.Label>
+            </div>
+            <Form.Control
+              name="priority"
+              value={formData.priority}
+              onChange={handleOnChange}
+              required
+            />
+          </Form.Group>
 
           <Form.Group className="mb-3" as={Row}>
             <div className="text-start">

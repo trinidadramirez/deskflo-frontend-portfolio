@@ -95,6 +95,17 @@ const newTicketsListSlice = createSlice({
       state.msgReplyError = "";
       state.replyMsg = "";
     },
+    changePriorityLoading: (state) => {
+      state.isLoading = true;
+    },
+    changePrioritySuccess: (state, action) => {
+      state.isLoading = false;
+      state.replyMsg = action.payload;
+    },
+    changePriorityFail: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
@@ -121,6 +132,9 @@ export const {
   reopenTicketSuccess,
   reopenTicketFail,
   resetTicketLandingPageMsg,
+  changePriorityLoading,
+  changePrioritySuccess,
+  changePriorityFail,
 } = actions;
 
 export default reducer;

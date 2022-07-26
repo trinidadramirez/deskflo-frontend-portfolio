@@ -10,6 +10,7 @@ import {
   resolveTicket,
   cancelTicket,
   reopenTicket,
+  changeTicketPriority,
 } from "./ticketsAction";
 import { resetTicketLandingPageMsg } from "./ticketsSlice";
 
@@ -67,7 +68,10 @@ export const TicketLandingPage = () => {
               </Button>
             </Row>
             <Row>
-              <Button className="mb-3 btn-shadow" onClick={() => dispatch(reopenTicket(ticketId))}>
+              <Button
+                className="mb-3 btn-shadow"
+                onClick={() => dispatch(reopenTicket(ticketId))}
+              >
                 Reopen
               </Button>
             </Row>
@@ -78,6 +82,42 @@ export const TicketLandingPage = () => {
               <div className="requestor">
                 Requestor: {specificTicket.requestor}
               </div>
+              <div className="requestor">
+                Priority: {specificTicket.priority}
+              </div>
+              <Button
+                className="m-2 btn-shadow"
+                onClick={() => {
+                  const priorityObj = {
+                    priority: "1",
+                  };
+                  dispatch(changeTicketPriority(ticketId, priorityObj));
+                }}
+              >
+                1
+              </Button>
+              <Button
+                className="m-2 btn-shadow"
+                onClick={() => {
+                  const priorityObj = {
+                    priority: "2",
+                  };
+                  dispatch(changeTicketPriority(ticketId, priorityObj));
+                }}
+              >
+                2
+              </Button>
+              <Button
+                className="m-2 btn-shadow"
+                onClick={() => {
+                  const priorityObj = {
+                    priority: "3",
+                  };
+                  dispatch(changeTicketPriority(ticketId, priorityObj));
+                }}
+              >
+                3
+              </Button>
               <div className="shortDescription">
                 Short Description: {specificTicket.shortDescription}
               </div>

@@ -3,6 +3,7 @@ const getSpecificTicketUrl = "http://localhost:3001/ticket/";
 const resolveTicketUrl = "http://localhost:3001/ticket/resolve-ticket/";
 const cancelTicketUrl = "http://localhost:3001/ticket/cancel-ticket/";
 const reopenTicketUrl = "http://localhost:3001/ticket/reopen-ticket/";
+const changePriorityUrl = "http://localhost:3001/ticket/change-priority/";
 
 export const getTickets = () => {
   return new Promise(async (resolve, reject) => {
@@ -123,6 +124,27 @@ export const createTicket = (formData) => {
             Authorization: sessionStorage.getItem("accessToken"),
           },
         },
+      );
+      resolve(result.data);
+    } catch (error) {
+      console.log(error.message);
+      reject(error);
+    }
+  });
+};
+
+export const updateTicketPriority = (_id, priorityObj) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      console.log(priorityObj);
+      const result = await axios.patch(
+        changePriorityUrl + _id,
+        priorityObj,
+        {
+          headers: {
+            Authorization: sessionStorage.getItem("accessToken"),
+          },
+        }
       );
       resolve(result.data);
     } catch (error) {

@@ -13,6 +13,7 @@ export const NewTicketsList = () => {
       <thead>
         <tr>
           <th>ID</th>
+          <th>Priority</th>
           <th>Status</th>
           <th>Requestor</th>
           <th>Short Description</th>
@@ -27,6 +28,7 @@ export const NewTicketsList = () => {
               <td>
                 <Link to={`/ticket/${row._id}`}>{row._id}</Link>
               </td>
+              <td>{row.priority}</td>
               <td>{row.status}</td>
               <td>{row.requestor}</td>
               <td>{row.shortDescription}</td>

@@ -18,6 +18,9 @@ import {
   reopenTicketLoading,
   reopenTicketSuccess,
   reopenTicketFail,
+  changePriorityLoading,
+  changePriorityFail,
+  changePrioritySuccess,
 } from "./ticketsSlice.js";
 
 import {
@@ -27,6 +30,7 @@ import {
   updateTicketStatusToResolved,
   updateTicketStatusToCanceled,
   updateTicketStatusToReopened,
+  updateTicketPriority,
 } from "../api/ticketApi";
 
 export const fetchTickets = () => async (dispatch) => {
@@ -132,5 +136,24 @@ export const reopenTicket = (_id) => async (dispatch) => {
   } catch (error) {
     console.log(error.message);
     dispatch(reopenTicketFail(error.message));
+  }
+};
+
+// Change ticket priority
+export const changeTicketPriority = (_id, priorityObj) => async (dispatch) => {
+  dispatch(changePriorityLoading());
+
+  try {
+    const result = await updateTicketPriority(_id, priorityObj);
+    console.log(result);
+
+    if (result.status === "error") {
+      return dispatch(changePriorityFail(result.message));
+    }
+    dispatch(fetchSpecificTicket(_id));
+    dispatch(changePrioritySuccess(result.message));
+  } catch (error) {
+    console.log(error.message);
+    dispatch(changePriorityFail(error.message));
   }
 };
