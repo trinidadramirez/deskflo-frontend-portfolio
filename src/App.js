@@ -1,7 +1,7 @@
 import "./App.css";
 import { EntryPage } from "./pages/EntryPage";
 import { Home } from "./pages/Home";
-import { CreateTicketPage } from "./pages/CreateTicketPage";
+import { CreateTicketPage } from "./pages/createTicketPage";
 import { TicketListPage } from "./pages/TicketListPage";
 import { TicketLandingPage } from "./pages/TicketLandingPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
