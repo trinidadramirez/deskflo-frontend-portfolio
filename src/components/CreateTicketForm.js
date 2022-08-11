@@ -44,12 +44,11 @@ export const CreateTicketForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
     dispatch(
       createNewTicket({
         ...formData,
         sender: name,
-        message: "Enter new messages here",
+        message: "Enter new messages below ⬇️",
       })
     );
   };

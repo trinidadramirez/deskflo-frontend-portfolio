@@ -25,7 +25,7 @@ export const TicketListPage = () => {
         <Col>
           <div className="text-start">
             <Link to="/createTicket">
-              <Button className="btn-primary">Add New Ticket</Button>
+              <Button className="btn-primary btn-shadow">Add New Ticket</Button>
             </Link>
           </div>
         </Col>

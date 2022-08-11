@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 export const NewTicketsList = () => {
   const { searchTicketList, isLoading, error } = useSelector((state) => state.tickets);
+  // const currentDate = Date.now();
 
   if (isLoading) return <h3>Loading tickets...</h3>;
   if (error) return <h3>{error}</h3>
@@ -38,7 +39,7 @@ export const NewTicketsList = () => {
           ))
         ) : (
           <tr>
-            <td colSpan="6" className="text-center">
+            <td colSpan="7" className="text-center">
               No results
             </td>
           </tr>

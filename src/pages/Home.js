@@ -11,7 +11,7 @@ export const Home = () => {
   const { tickets } = useSelector((state) => state.tickets);
 
   useEffect(() => {
-      dispatch(fetchTickets());
+    dispatch(fetchTickets());
   }, [dispatch]);
 
   const totalTickets = tickets.length;
@@ -26,15 +26,15 @@ export const Home = () => {
       </Row>
       <Row>
         <Col className="mt-2">
-          <div className="text-start fw-bold text-secondary">
+          <div className="text-start fw-bold text-secondary arial">
             Total Tickets: {totalTickets}
           </div>
-          <div className="text-start fw-bold text-secondary">
+          <div className="text-start fw-bold text-secondary arial">
             Open Tickets: {unassignedTickets.length}
           </div>
           <div className="text-end">
             <Link to="/createTicket">
-              <Button className="mt-2">Create New Ticket</Button>
+              <Button className="mt-2 btn-shadow">Create New Ticket</Button>
             </Link>
           </div>
         </Col>

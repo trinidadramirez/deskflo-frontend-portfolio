@@ -3,19 +3,9 @@ import { Form, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchReply } from "../pages/ticketsAction";
 import PropTypes from "prop-types";
-// import { io } from "socket.io-client";
 
-export const TicketReply = ({ _id }) => {
+export const ResolutionDetails = ({ _id }) => {
   const dispatch = useDispatch();
-  // const socket = io("http://localhost:3003");
-
-  // socket.on("connect", () => {
-
-  // });
-
-  // socket.on("receive-msg", msg => {
-
-  // })
 
   const {
     user: { name },
@@ -33,7 +23,6 @@ export const TicketReply = ({ _id }) => {
       sender: name,
     };
 
-    // socket.emit("send-msg", msgObj);
     dispatch(fetchReply(_id, msgObj));
     setMessage("");
   };
@@ -42,7 +31,7 @@ export const TicketReply = ({ _id }) => {
     <div>
       <Form onSubmit={handleOnSubmit}>
         <div className="text-start">
-          <Form.Label>Enter New Message</Form.Label>
+          <Form.Label>Resolution Details</Form.Label>
         </div>
         <Form.Control
           as="textarea"
@@ -53,7 +42,7 @@ export const TicketReply = ({ _id }) => {
         />
         <div className="text-end mt-3">
           <Button className="btn-shadow" type="submit">
-            Send
+            Save
           </Button>
         </div>
       </Form>
@@ -61,6 +50,6 @@ export const TicketReply = ({ _id }) => {
   );
 };
 
-TicketReply.propTypes = {
+ResolutionDetails.propTypes = {
   _id: PropTypes.string.isRequired,
 };

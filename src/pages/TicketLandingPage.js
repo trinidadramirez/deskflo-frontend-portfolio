@@ -77,57 +77,59 @@ export const TicketLandingPage = () => {
             </Row>
           </Col>
           <div className="text-black text-start jumbotron bg-deskflo-color-no-vh">
-            <Col>
-              ID: {ticketId}
-              <div className="requestor">
-                Requestor: {specificTicket.requestor}
-              </div>
-              <div className="requestor">
-                Priority: {specificTicket.priority}
-              </div>
-              <Button
-                className="m-2 btn-shadow"
-                onClick={() => {
-                  const priorityObj = {
-                    priority: "1",
-                  };
-                  dispatch(changeTicketPriority(ticketId, priorityObj));
-                }}
-              >
-                1
-              </Button>
-              <Button
-                className="m-2 btn-shadow"
-                onClick={() => {
-                  const priorityObj = {
-                    priority: "2",
-                  };
-                  dispatch(changeTicketPriority(ticketId, priorityObj));
-                }}
-              >
-                2
-              </Button>
-              <Button
-                className="m-2 btn-shadow"
-                onClick={() => {
-                  const priorityObj = {
-                    priority: "3",
-                  };
-                  dispatch(changeTicketPriority(ticketId, priorityObj));
-                }}
-              >
-                3
-              </Button>
-              <div className="shortDescription">
-                Short Description: {specificTicket.shortDescription}
-              </div>
-              <div className="date">
-                Created Date:{" "}
-                {specificTicket.createdDate &&
-                  new Date(specificTicket.createdDate).toLocaleString()}
-              </div>
-              <div className="status">Status: {specificTicket.status}</div>
-            </Col>
+            <Row>
+              <Col>
+                ID: {ticketId}
+                <div className="requestor">
+                  Requestor: {specificTicket.requestor}
+                </div>
+                <div className="requestor">
+                  Priority: {specificTicket.priority}
+                </div>
+                <Button
+                  className="m-2 btn-shadow"
+                  onClick={() => {
+                    const priorityObj = {
+                      priority: "1",
+                    };
+                    dispatch(changeTicketPriority(ticketId, priorityObj));
+                  }}
+                >
+                  1
+                </Button>
+                <Button
+                  className="m-2 btn-shadow"
+                  onClick={() => {
+                    const priorityObj = {
+                      priority: "2",
+                    };
+                    dispatch(changeTicketPriority(ticketId, priorityObj));
+                  }}
+                >
+                  2
+                </Button>
+                <Button
+                  className="m-2 btn-shadow"
+                  onClick={() => {
+                    const priorityObj = {
+                      priority: "3",
+                    };
+                    dispatch(changeTicketPriority(ticketId, priorityObj));
+                  }}
+                >
+                  3
+                </Button>
+                <div className="shortDescription">
+                  Short Description: {specificTicket.shortDescription}
+                </div>
+                <div className="date">
+                  Created Date:{" "}
+                  {specificTicket.createdDate &&
+                    new Date(specificTicket.createdDate).toLocaleString()}
+                </div>
+                <div className="status">Status: {specificTicket.status}</div>
+              </Col>
+            </Row>
           </div>
         </Row>
         <Row className="mt-3">
